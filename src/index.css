@@ -12,8 +12,9 @@ code {
     monospace;
 }
 .el-content{
-  width: 300px;
-  height: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  max-height: 300px;
   border: 1px;
   box-shadow: 1px 1px 3px 0.1px;
   border-radius: 10px;
@@ -21,7 +22,8 @@ code {
   padding: 1em;
   transition: 0.5s;
   z-index: 5;
- 
+  overflow-wrap: break-word;
+ margin-top: 10px;
 }
 .el-content:hover  {
   margin-top: 0.5em;
@@ -63,6 +65,124 @@ display: flex;
   text-decoration: none;
  
 }
+.wrap-content{
+
+  padding: 1em 1em 2em;
+  /* border: 1px solid black; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  
+}
+.image-center{
+  text-align: center;
+  padding: 2em;
+}
+.link-list{
+  display: flex;
+  justify-content: center;
+  border: 1px solid   #2e3440;
+  padding: 10px;
+  
+  
+}
+.content-list-1{
+  position: relative;
+  z-index: 9999;
+  list-style-type: none;
+}
+.content-list-1 li {
+  padding: 5px;
+  color: beige;
+  width: 400px;
+  margin: 10px;
+  box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+.link-contain-1{
+  background-color: #52AD9F;
+
+}
+.link-contain-1::after{
+  content: "  - (Перейти)";
+  padding-left: 5px;
+ 
+
+}
+.link-contain-2{
+  background-color: #7152AD;
+
+}
+.link-contain-2::after{
+  content: "  - (Перейти)";
+  padding-left: 5px;
+ 
+
+}
+.link-contain-3{
+  background-color: #AD5260;
+
+}
+.link-contain-3::after{
+  content: "  - (Перейти)";
+  padding-left: 5px;
+ 
+
+}
+.link-contain-4{
+  background-color: #8EAD52;
+
+}
+.link-contain-4::after{
+  content: "  - (Перейти)";
+  padding-left: 5px;
+ 
+
+}
+.link-contain-empty-1{
+  width: 400px;
+
+  background-color: dimgray;
+}
+
+.link-list li{
+  list-style-type: none;
+  
+  margin-left: 50px;
+  border: 1px solid   #2e3440;
+  border-radius: 10px;
+  padding: 10px;
+  background-color:  #2e3440;
+  box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+}
+.link-list a{
+  text-decoration: none;
+  color: white;
+}
+
+
+.link-1{
+  text-decoration: none;
+  color: #2e3440;
+  border: 1px solid #2e3440;
+  padding: 5px;
+  border-radius: 5px;
+  
+  
+}
+.wrap-content div {
+  padding-right: 30em;
+}
+.images{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding:3em;
+}
+.wrap-content table{
+  border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid grey; 
+}
+th, td {border: 1px solid grey;}
 
 .headapp{
   /* margin-left: 10px; */
@@ -87,8 +207,13 @@ display: flex;
 .content-root{
   display: flex;
   position: relative;
-  z-index: 1000;
+  flex-wrap:wrap;
+
+ 
   mix-blend-mode: normal;
+}
+.select{
+  z-index: -100;
 }
 .set-content{
   
@@ -113,15 +238,18 @@ justify-content: end;
   animation: moveleft 1.3s;
   animation-fill-mode: forwards;
   position: relative;
-  z-index: 9999;
+   z-index: -9999; 
+ 
+
 }
 .content-container {
   margin-left: 50px;
   margin-right: 50px;
   animation: showcontent 5s;
+  padding-bottom:100px ;
   
   animation-fill-mode: forwards;
- 
+
   position: absolute;
   
 }
@@ -200,6 +328,9 @@ background-color: #AD5260;
 .title-5{
   background-color: rgb(5, 121, 121);
 }
+.table-1 tr td{
+  padding: 1rem;
+}
 
 
 @keyframes moveleft{
@@ -221,7 +352,7 @@ background-color: #AD5260;
    
     transform: translateX(-1000px);
     opacity: 0;
-  
+    height: 1px;
   }
 }
 @keyframes showcontent{
