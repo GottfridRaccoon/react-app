@@ -5,14 +5,14 @@ import PropTypes from 'prop-types'
 
 const ContentItems = ({ contentElem, Click }) => {
   return (
-    <center>
-      <div >
-        <h3>{contentElem.title}</h3>
-        <hr className="title-hr"></hr>
-        <p>{contentElem.description}</p>
-        <SetContent contentElem={contentElem} setClick={Click} />
-      </div>
-    </center>
+
+    <div >
+      <h3>{contentElem.title}</h3>
+      <hr className="title-hr"></hr>
+      <p>{contentElem.description}</p>
+      <SetContent contentElem={contentElem} setClick={Click} />
+    </div>
+
   )
 }
 ContentItems.propTypes = {

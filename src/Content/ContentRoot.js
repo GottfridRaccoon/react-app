@@ -94,18 +94,20 @@ const ContentRoot = () => {
           {/* {contentElems.forEach(e => <Route path={e.path.toString()} component={e["comp"]} />)} */}
 
         </Switch>
-        <div className="content-root">
-          <ContentList
-            contentElems={contentElems}
-            selectState={selectState}
-            setContent={Content}
-          />
-        </div>
+        <center>
+          <div className="content-root">
+            <ContentList
+              contentElems={contentElems}
+              selectState={selectState}
+              setContent={Content}
+            />
+          </div>
+        </center>
       </Router>
     </Context.Provider>
   )
 }
 ContentRoot.propTypes = {
- 
+
 }
 export default ContentRoot
