@@ -3,19 +3,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const ContentItems = ({contentElem,Click})=>{
-  return(  
-    
-  <div >
-      <h3>{contentElem.title}</h3>
-      <hr className = "title-hr"></hr>
-      <p>{contentElem.description}</p>
-      <SetContent contentElem={contentElem } setClick={Click} />
-  </div>
+const ContentItems = ({ contentElem, Click }) => {
+  return (
+    <center>
+      <div >
+        <h3>{contentElem.title}</h3>
+        <hr className="title-hr"></hr>
+        <p>{contentElem.description}</p>
+        <SetContent contentElem={contentElem} setClick={Click} />
+      </div>
+    </center>
   )
 }
-ContentItems.propTypes= {
-    contentElem: PropTypes.object.isRequired
+ContentItems.propTypes = {
+  contentElem: PropTypes.object.isRequired
 }
 
 

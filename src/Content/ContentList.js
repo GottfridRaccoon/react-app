@@ -41,6 +41,7 @@ let ContentList = (props) => {
 ContentList.PropTypes = {
     contentElems: PropTypes.arrayOf(PropTypes.object),
     Click: PropTypes.func.isRequired
+  
 }
 
 

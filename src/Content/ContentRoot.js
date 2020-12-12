@@ -20,7 +20,8 @@ const ContentRoot = () => {
       представления и оформления зависят исключительно от разработчика и тех целей, которые он перед собой ставит `,
       selected: false,
       path: '/html',
-      id: 0
+      id: 0,
+      comp: HtmlPage
     },
     {
       title: "Тэги", description: `Чтобы браузер при отображении документа понимал, что имеет дело не с простым текстом,
@@ -28,6 +29,7 @@ const ContentRoot = () => {
       selected: false,
       path: '/tags',
       id: 1
+      , comp: Tags
 
     },
     {
@@ -89,7 +91,7 @@ const ContentRoot = () => {
           <Route path="/typetags" component={TypeTags} />
           <Route path="/tagattr" component={TagAttr} />
           <Route path="/texthtml" component={TextHtml} />
-          {/* contentElems.forEach(e => <Route path={contentElems.path} component={contentElems.comp} />) */}
+          {/* {contentElems.forEach(e => <Route path={e.path.toString()} component={e["comp"]} />)} */}
 
         </Switch>
         <div className="content-root">
@@ -104,6 +106,6 @@ const ContentRoot = () => {
   )
 }
 ContentRoot.propTypes = {
-  setDeskription: PropTypes.func.isRequired
+ 
 }
 export default ContentRoot
