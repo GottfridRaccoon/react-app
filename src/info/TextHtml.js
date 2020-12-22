@@ -1,5 +1,5 @@
 import React from "react"
-import Navigation from "../navigation/Navbar"
+
 import pic from "../image/pic1.png"
 import pic2 from "../image/pic2.png"
 import pic3 from "../image/pic3.png"
@@ -9,10 +9,10 @@ import pic6 from '../image/pic6.png'
 const TextHtml = () => {
 	return (
 		<div>
-			<Navigation />
-			<div className="content-container">
+			
+			<div >
 				<div>
-					<h2 className="content-title">Текст </h2>
+				
 					<h4 className="title-1">Особенности текста в HTML</h4>
 					<p>Прежде чем редактировать код веб-страницы, следует принять во внимание некоторые особенности, которые присущи HTML при работе с текстом.</p>
 					<h5>Любое количество пробелов идущих подряд, в браузере отображается как один.</h5>

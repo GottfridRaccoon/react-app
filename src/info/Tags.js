@@ -1,15 +1,15 @@
 import React from 'react'
-import Navbar from '../navigation/Navbar'
+
 import tags from '../image/tags.png'
 import result from "../image/res.png"
 import result2 from "../image/res2.png"
 const Tags = () => {
     return (
         <div>
-            <Navbar />
+          
 
-            <div className='content-container'>
-                <h2 className="content-title">Тэги </h2>
+            <div >
+                
                 <p>Чтобы браузер при отображении документа понимал, что имеет дело не с простым текстом,
                 а с элементом форматирования и применяются теги.
                   Общий синтаксис написания тегов следующий. </p>

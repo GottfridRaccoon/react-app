@@ -9,6 +9,10 @@ import { Context } from './Context'
 import TypeTags from "../info/TypeTags"
 import TagAttr from '../info/TagAttr'
 import TextHtml from '../info/TextHtml'
+import Yakor from "../info/Yakor"
+import LinksHtml from '../info/LinksHtml'
+import ElRoot from '../elRoot/ElRoot'
+import PicturesHtml from "../info/PicturesHtml"
 
 const ContentRoot = () => {
   let [selectState, setSelect] = React.useState({ select: false })
@@ -21,7 +25,7 @@ const ContentRoot = () => {
       selected: false,
       path: '/html',
       id: 0,
-      comp: HtmlPage
+      comp: <HtmlPage />
     },
     {
       title: "Тэги", description: `Чтобы браузер при отображении документа понимал, что имеет дело не с простым текстом,
@@ -29,12 +33,12 @@ const ContentRoot = () => {
       selected: false,
       path: '/tags',
       id: 1
-      , comp: Tags
+      , comp: <Tags />
 
     },
     {
       title: "Структура HTML-кода.",
-      description: "Если открыть любую веб-страницу, то она будет содержать в себе типичные элементы, которые не меняются от вида и направленности сайта. ", selected: false, path: "/pages", id: 2
+      description: "Если открыть любую веб-страницу, то она будет содержать в себе типичные элементы, которые не меняются от вида и направленности сайта. ", selected: false, path: "/pages", id: 2, comp: <HtmlStructure />
 
     },
     {
@@ -42,7 +46,8 @@ const ContentRoot = () => {
       description: "<bloquote>, <div>, <ul>,<html>,<head>,<title>,<meta>,<h1>,...,<h6>,<hr>,<br>,<pre>,<a>,<b>,<big>,<em>,<head>",
       selected: false,
       path: "/typetags",
-      id: 3
+      id: 3, comp: <TypeTags />
+
     },
     {
       title: "Значения атрибутов тегов",
@@ -50,15 +55,31 @@ const ContentRoot = () => {
       selected: false,
       path: "/tagattr",
       id: 4,
-
+      comp: <TagAttr />
     },
     {
       title: "Текст",
       description: "Прежде чем редактировать код веб-страницы, следует принять во внимание некоторые особенности, которые присущи HTML при работе с текстом."
       , path: "/texthtml"
       ,
-      id: 5
+      id: 5, comp: <TextHtml />
 
+    },
+    {
+      selected: false, title: "Ссылки", description: "Ссылки являются основой гипертекстовых документов и позволяют переходить с одной веб-страницы на другую. Особенность их состоит в том, что сама ссылка может вести не только на HTML-файлы, но и на файл любого типа, причем этот файл может размещаться совсем на другом сайте. Главное, чтобы к документу, на который делается ссылка, был доступ. Иными словами, если путь к файлу можно указать в адресной строке браузера, и файл при этом будет открыт, то на него можно сделать ссылку.", path: "/links", id: 6,
+      comp: <LinksHtml />
+    }
+    , {
+      title: "Якоря",
+      selected: false,
+      description: "Якорем называется закладка с уникальным именем на определенном месте веб-страницы, предназначенная для создания перехода к ней по ссылке. Якоря удобно применять в документах большого объема, чтобы можно было быстро переходить к нужному разделу."
+      , id: 7, path: "/yakor", comp: <Yakor />
+    },
+    {
+      selected: false,
+      title: "Изображения",
+      description: "Добавление изображения происходит в два этапа: вначале готовится графический файл желаемого размера, затем он добавляется на страницу через тег <img>. Сам HTML предназначен только для того, чтобы отобразить требуемую картинку, при этом никак ее не меняя."
+      , id: 7, path: "/picturehtml", comp: <PicturesHtml />
     }
   ])
 
@@ -67,13 +88,14 @@ const ContentRoot = () => {
   })
   let [elChanged, changeEl] = React.useState({ id: 0 })
 
-  let Content = id => {
-    changeEl({ id: id })
+  let Content = id => {//запись идентификатора в стэйт
+    changeEl({ id: id })// запись айди
+    console.log(elChanged)
     setContent(
-      contentElems.map((el) => {
+      contentElems.map((el) => {//поиск выбранного идентификатора из компонента
         if (el.id === id) {
           el.selected = true
-          ChangeState(true)
+          ChangeState(true) // элемент выбран
         }
         return el
       })
@@ -81,33 +103,34 @@ const ContentRoot = () => {
   }
 
   return (
-    <Context.Provider value={{ ChangeState, contentElems, elChanged, changeEl }}>
+    <Context.Provider value={{ ChangeState, contentElems, elChanged, changeEl }}> 
+    
       <Router>
         <Switch>
-          <Route exact path="/html" component={HtmlPage} />
-          {/* <Route exact path="/" component={ContentRoot} />  */}
-          <Route path="/tags" component={Tags} />
-          <Route path="/pages" component={HtmlStructure} />
-          <Route path="/typetags" component={TypeTags} />
-          <Route path="/tagattr" component={TagAttr} />
-          <Route path="/texthtml" component={TextHtml} />
-          {/* {contentElems.forEach(e => <Route path={e.path.toString()} component={e["comp"]} />)} */}
+          {
+            contentElems.map(el => <Route exact path={el.path} render={(props) => <ElRoot {...props} prop={el} content={el.comp} />} />)
+    //маршрутизация компонентов
+    }
 
         </Switch>
-        <center>
-          <div className="content-root">
-            <ContentList
-              contentElems={contentElems}
-              selectState={selectState}
-              setContent={Content}
-            />
-          </div>
-        </center>
+
+        <div className="content-root">
+          <ContentList
+            contentElems={contentElems}
+            selectState={selectState}
+            setContent={Content}
+          />
+        </div>
+
       </Router>
     </Context.Provider>
   )
 }
 ContentRoot.propTypes = {
-
+  elChanged: PropTypes.object,
+  Content: PropTypes.func,
+  changeEl: PropTypes.func,
+  selectState: PropTypes.object,
+  contentElems: PropTypes.object
 }
 export default ContentRoot

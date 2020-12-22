@@ -6,18 +6,15 @@ import ContentItems from './ContentItems'
 
 let ContentList = (props) => {
     let classSet = "";
-    // let elems = document.getElementsByClassName('el-content')
-    // props.selectState.map((el) => {
+    
     if (props.selectState.select === true) {
         classSet = ' selected'
     } if (props.selectState === true) {
-        // Array.from(elems).forEach(element => {
-        // element.classList.remove('selected')
+        
         classSet = ""
-        // });
+      
     }
-    //  return classSet
-    // })
+  
 
     return (
 

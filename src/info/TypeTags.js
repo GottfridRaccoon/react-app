@@ -1,21 +1,21 @@
 import React, { useRef } from 'react'
-import Navbar from '../navigation/Navbar'
+
 
 
 
 const TypeTags = () => {
-	//  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
 
-	let blockElem = useRef(null);
+
+	let blockElem = useRef(null); //хранит ссылку на элемент
 	let titleDocs = useRef(null)
 	let topLvl = useRef(null)
 	let rowElems = useRef(null)
-	let scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: "smooth" })
+	let scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: "smooth" })// функция скролла  до элемента
 	return (
 		<div>
-			<Navbar />
-			<div className="content-container">
-				<h2 className="content-title" > Типы тегов </h2>
+
+			<div >
+
 
 				<p>Условно теги делятся на следующие типы:</p>
 

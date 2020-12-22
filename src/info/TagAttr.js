@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../navigation/Navbar"
+
 import Palitr from "../image/palitr.jpg"
 import Color from "../image/color1.png"
 import img1 from "../image/img1.png"
@@ -10,9 +10,9 @@ const TagAttr = () => {
 
 	return (
 		<div>
-			<Navbar />
-			<div className="content-container">
-				<h2 className="content-title">Значения атрибутов тегов</h2>
+			
+			<div >
+		
 				<p>Атрибуты тегов расширяют возможности самих тегов и позволяют гибко управлять различными настройками отображения элементов веб-страницы. Общее количество атрибутов достаточно велико, но их значения, как правило, можно сгруппировать по разным типам, например, задающих цвет, размер, адрес и др. Далее рассмотрим основные типы значений. </p>
 				<div>
 					<h4 className="title-1">Цвет</h4>

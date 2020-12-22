@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../navigation/Navbar'
+
 import doctypeImage from '../image/doctype.png'
 import titlebrowser from "../image/titlebrowser.png"
 
@@ -9,10 +9,10 @@ const HtmlStructure = () => {
 
 
 		<div>
-			<Navbar />
-			<div className='content-container'>
+		
+			<div>
 
-				<h2 className="content-title">Структура HTML-кода</h2>
+				
 				<p>Если открыть любую веб-страницу, то она будет содержать
 				в себе типичные элементы, которые
 				не меняются от вида и направленности сайта. </p>
